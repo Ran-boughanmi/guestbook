@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tone_analyzer="<you tone analyzer service name>"
+tone_analyzer="Tone Analyzer-cz"
 
 B64_URL=$(ibmcloud resource service-keys --instance-name "$tone_analyzer" --output json| jq .[0].credentials.url -j | base64 -w 0)
 B64_APIKEY=$(ibmcloud resource service-keys --instance-name "$tone_analyzer" --output json| jq .[0].credentials.apikey -j | base64 -w 0)
@@ -10,7 +10,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: binding-tone
-  namespace: <my_project>
+  namespace: sn-labs-boughanmiran
 type: Opaque
 data:
   url: $B64_URL
